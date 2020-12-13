@@ -1,27 +1,27 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
 }
-body{
-    font-family: 'Langar', cursive;
-    background-color: #B35539;
+body {
+    font-family: "Langar", cursive;
+    background-color: #b35539;
 }
 
-header{
+header {
     display: grid;
     height: 15vw;
-    background-color: #FC815B;
+    background-color: #fc815b;
     justify-content: center;
     align-items: center;
-    h1{
+    h1 {
         font-size: 7vw;
     }
 }
-.addbtn{
+.addbtn {
     height: 70px;
     width: 70px;
     border-radius: 50%;
-    background-color: #03738C;
+    background-color: #03738c;
     // display: grid;
     // justify-content: center;
     // align-items: center;
@@ -32,18 +32,97 @@ header{
     top: 17vw;
     right: 5%;
     transition: all 300ms ease-in-out;
-    span{
+    span {
         position: relative;
         top: 10%;
     }
-    &:hover{
-        box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.75);
-        background-color: #FC815B;
+    &:hover {
+        box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.75);
+        background-color: #fc815b;
         top: 16.5vw;
     }
 }
-.container{
+.container {
     padding-right: 15%;
     padding-left: 15%;
     padding-top: 5%;
+}
+form {
+    z-index: 999;
+    opacity: 1;
+    //width: 300px;
+    background-color: #0388a6;
+    padding: 1.5rem;
+    border-radius: 1px;
+    position: absolute;
+    top: 18vw;
+    right: 20%;
+    left: 20%;
+    bottom: 20%;
+    transform: scale(1);
+    transition: all 200ms ease-in-out;
+    h3 {
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+    input[type="text"],
+    input[type="number"] {
+        padding: 10px;
+        display: block;
+        margin-bottom: 15px;
+        width: 100%;
+        border: 2px solid #fc815b;
+        &:focus {
+            outline: 2px solid #b35539;
+        }
+    }
+    input[type="checkbox"] {
+        transform: scale(1.5);
+        margin-left: 10px;
+    }
+    label {
+        font-size: 1.3em;
+    }
+    input[type="submit"] {
+        padding: 5%;
+        background-color: #03738c;
+        border: none;
+        font-family: "Langar", cursive;
+        font-size: 1.2em;
+        cursor: pointer;
+        transition: all 300ms ease-in-out;
+        &:hover {
+            box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.75);
+            background-color: #fc815b;
+        }
+        &:focus{
+            outline: none;
+        }
+    }
+    .btn_formsset {
+        position: absolute;
+        bottom: 5%;
+        width: 171px;
+        right: 5%;
+    }
+}
+form.hidden {
+    //display: none;
+    opacity: 0;
+    transform: scale(0);
+}
+.overlay {
+    position: absolute;
+    background-color: #000;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0.5;
+    z-index: 998;
+    display: none;
+}
+.overlay.hidden {
+    display: block;
 }

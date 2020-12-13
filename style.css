@@ -5,15 +5,15 @@
 }
 
 body {
-  font-family: 'Langar', cursive;
-  background-color: #B35539;
+  font-family: "Langar", cursive;
+  background-color: #b35539;
 }
 
 header {
   display: -ms-grid;
   display: grid;
   height: 15vw;
-  background-color: #FC815B;
+  background-color: #fc815b;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -30,7 +30,7 @@ header h1 {
   height: 70px;
   width: 70px;
   border-radius: 50%;
-  background-color: #03738C;
+  background-color: #03738c;
   text-align: center;
   font-size: 3em;
   cursor: pointer;
@@ -49,7 +49,7 @@ header h1 {
 .addbtn:hover {
   -webkit-box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.75);
           box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.75);
-  background-color: #FC815B;
+  background-color: #fc815b;
   top: 16.5vw;
 }
 
@@ -57,5 +57,102 @@ header h1 {
   padding-right: 15%;
   padding-left: 15%;
   padding-top: 5%;
+}
+
+form {
+  z-index: 999;
+  opacity: 1;
+  background-color: #0388a6;
+  padding: 1.5rem;
+  border-radius: 1px;
+  position: absolute;
+  top: 18vw;
+  right: 20%;
+  left: 20%;
+  bottom: 20%;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+form h3 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+form input[type="text"],
+form input[type="number"] {
+  padding: 10px;
+  display: block;
+  margin-bottom: 15px;
+  width: 100%;
+  border: 2px solid #fc815b;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus {
+  outline: 2px solid #b35539;
+}
+
+form input[type="checkbox"] {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  margin-left: 10px;
+}
+
+form label {
+  font-size: 1.3em;
+}
+
+form input[type="submit"] {
+  padding: 5%;
+  background-color: #03738c;
+  border: none;
+  font-family: "Langar", cursive;
+  font-size: 1.2em;
+  cursor: pointer;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+form input[type="submit"]:hover {
+  -webkit-box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.75);
+  background-color: #fc815b;
+}
+
+form input[type="submit"]:focus {
+  outline: none;
+}
+
+form .btn_formsset {
+  position: absolute;
+  bottom: 5%;
+  width: 171px;
+  right: 5%;
+}
+
+form.hidden {
+  opacity: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+.overlay {
+  position: absolute;
+  background-color: #000;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  opacity: 0.5;
+  z-index: 998;
+  display: none;
+}
+
+.overlay.hidden {
+  display: block;
 }
 /*# sourceMappingURL=style.css.map */
