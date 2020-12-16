@@ -46,6 +46,8 @@ header {
     padding-right: 15%;
     padding-left: 15%;
     padding-top: 5%;
+    display: flex;
+    flex-wrap: wrap;
 }
 form {
     z-index: 999;
@@ -92,6 +94,7 @@ form {
         font-size: 1.2em;
         cursor: pointer;
         transition: all 300ms ease-in-out;
+        border-radius: 10%;
         &:hover {
             box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.75);
             background-color: #fc815b;
@@ -105,6 +108,12 @@ form {
         bottom: 5%;
         width: 171px;
         right: 5%;
+    }
+    .info{
+        display: block;
+        font-size: 1.2em;
+        color: red;
+
     }
 }
 form.hidden {
@@ -125,4 +134,28 @@ form.hidden {
 }
 .overlay.hidden {
     display: block;
+}
+.card{
+    position: relative;
+    padding: 2em;
+    padding-bottom: 3em;
+    background-color: #0388a6;
+    margin: 1em;
+    border: 2px solid #FC825B;
+    border-radius: 10px;
+    color: #f1f1f1;
+    //flex: auto;
+    h3{
+        font-size: 1.5em;
+    }
+    span{
+        display: block;
+        line-height: 200%;
+    }
+    .icon-pack{
+        position: absolute;
+        cursor: pointer;
+        bottom: 5%;
+        right: 8%;
+    }
 }

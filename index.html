@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Langar&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7c1106c071.js" crossorigin="anonymous"></script>
     <title>Bookshelf</title>
 </head>
 
@@ -17,13 +18,21 @@
     </header>
     <section class="books">
         <div class="container">
-
+            <div class="card">
+                <h3>Booktitle</h3>
+                <span>Author</span>
+                <span>Page Nr: xxx</span>
+                <span>gelesen: wahr</span>
+                <div class="icon-pack">
+                    <i class="far fa-trash-alt"></i>
+                    <i class="fas fa-minus-circle"></i>
+                </div>
+            </div>
         </div>
     </section>
     <div id="btn_add" class="addbtn">
         <span>&plus;</span>
     </div>
-
     <form class="forminput hidden">
         <h3>Add Book</h3>
         <input type="text" placeholder="Title">
@@ -35,6 +44,7 @@
             <input type="submit" value="Cancel" id="btn_cancel">
             <input type="submit" value="Add Book" id="btn_addbook">
         </div>
+        <span class="info"></span>
     </form>
     <script src="script.js">& plus</script>
 </body>
