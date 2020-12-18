@@ -11,15 +11,12 @@ function Books(title, author, pages, read) {
     this.title = title;
     this.pages = pages;
     this.author = author;
-    this.read = read
+    this.read = read;
 };
-// function Book(read) {
-//     this.read = read
-// }
 
 function addBookToLibrary() {
-    if (document.querySelector('form input[placeholder="Title"]').value !== '' ||
-        document.querySelector('form input[placeholder="author"]').value !== '' ||
+    if (document.querySelector('form input[placeholder="Title"]').value !== '' &&
+        document.querySelector('form input[placeholder="author"]').value !== '' &&
         document.querySelector('form input[type="number"]').value !== '') {
         const newBook = Object.create(Books);
         newBook.title = document.querySelector('form input[placeholder="Title"]').value;
@@ -31,25 +28,67 @@ function addBookToLibrary() {
         document.querySelector('form input[placeholder="author"]').value = '';
         document.querySelector('form input[type="number"]').value = '';
         document.querySelector('form input[type="checkbox"]').checked = false;
-
         formInput.classList.toggle('hidden');
         overlay.classList.toggle('hidden');
         info.textContent = '';
     } else {
-        info.textContent = "Use the textfields to type some Text"
+        info.textContent = "There is nothing to add, fill in some Text"
     }
 }
 function addBooksToHTML() {
-    while(bookShelf.children.length > 0){
+    while (bookShelf.children.length > 0) {
         bookShelf.children[0].remove();
     }
     createHTML();
 }
-function createHTML() {
-    let card = '';
-    console.log(card);
-}
 
+function createHTML() {
+    for (let i in books) {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.dataset.index = i;
+        const heading = document.createElement('h3');
+        const title = books[i].title;
+        heading.textContent = title;
+        card.appendChild(heading);
+        const subAuthor = document.createElement('span');
+        const author = books[i].author;
+        subAuthor.textContent = author;
+        card.appendChild(subAuthor);
+        const subPages = document.createElement('span');
+        const pages = books[i].numberOfPages;
+        subPages.textContent = 'Pages: ' + pages;
+        card.appendChild(subPages);
+        const subRead = document.createElement('span');
+        const read = books[i].read;
+        subRead.textContent = 'Read: ' + read;
+        card.appendChild(subRead);
+        const icons = document.createElement('div');
+        icons.classList.add('icon-pack');
+        card.appendChild(icons);
+        let iconTrash = document.createElement('i');
+        iconTrash.classList.add('far')
+        iconTrash.classList.add('fa-trash-alt');
+        icons.appendChild(iconTrash);
+        let iconBook = document.createElement('i');
+        iconBook.classList.add('fas');
+        iconBook.classList.add('fa-book-reader');
+        icons.appendChild(iconBook);
+        bookShelf.appendChild(card);
+        console.log(card);
+    }
+}
+window.addEventListener('click', (e) =>{
+    let element = e.target
+    if(element.classList.contains('far')){
+        dataNr = Object.assign({}, element.parentElement.parentElement.dataset);
+        element.parentElement.parentElement.remove();
+        books.splice(dataNr.index, 1);
+    }
+    if(element.classList.contains('fas')){
+        
+    }
+})
 
 add.addEventListener('click', () => {
     formInput.classList.toggle('hidden');
@@ -67,4 +106,5 @@ btnAddBook.addEventListener('click', (e) => {
     console.table(books);
     addBooksToHTML();
 })
+
 

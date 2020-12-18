@@ -5,15 +5,15 @@
 }
 
 body {
-  font-family: "Langar", cursive;
-  background-color: #b35539;
+  font-family: 'Dancing Script', cursive;
+  background-color: #e0fbfc;
 }
 
 header {
   display: -ms-grid;
   display: grid;
   height: 15vw;
-  background-color: #fc815b;
+  background-color: #98c1d9;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -27,10 +27,10 @@ header h1 {
 }
 
 .addbtn {
-  height: 70px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
-  background-color: #03738c;
+  background-color: #3d5a80;
   text-align: center;
   font-size: 3em;
   cursor: pointer;
@@ -43,13 +43,13 @@ header h1 {
 
 .addbtn span {
   position: relative;
-  top: 10%;
+  bottom: 20%;
 }
 
 .addbtn:hover {
   -webkit-box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.75);
           box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.75);
-  background-color: #fc815b;
+  background-color: #98c1d9;
   top: 16.5vw;
 }
 
@@ -64,10 +64,14 @@ header h1 {
       flex-wrap: wrap;
 }
 
+.container .far, .container .fas {
+  margin: 0 5px 0 0;
+}
+
 form {
   z-index: 999;
   opacity: 1;
-  background-color: #0388a6;
+  background-color: #293241;
   padding: 1.5rem;
   border-radius: 1px;
   position: absolute;
@@ -79,6 +83,7 @@ form {
           transform: scale(1);
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
+  color: #f1f1f1;
 }
 
 form h3 {
@@ -93,12 +98,12 @@ form input[type="number"] {
   display: block;
   margin-bottom: 15px;
   width: 100%;
-  border: 2px solid #fc815b;
+  border: 2px solid #98c1d9;
 }
 
 form input[type="text"]:focus,
 form input[type="number"]:focus {
-  outline: 2px solid #b35539;
+  outline: 2px solid #e0fbfc;
 }
 
 form input[type="checkbox"] {
@@ -113,7 +118,7 @@ form label {
 
 form input[type="submit"] {
   padding: 5%;
-  background-color: #03738c;
+  background-color: #3d5a80;
   border: none;
   font-family: "Langar", cursive;
   font-size: 1.2em;
@@ -126,7 +131,7 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
   -webkit-box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.75);
           box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.75);
-  background-color: #fc815b;
+  background-color: #98c1d9;
 }
 
 form input[type="submit"]:focus {
@@ -172,9 +177,9 @@ form.hidden {
   position: relative;
   padding: 2em;
   padding-bottom: 3em;
-  background-color: #0388a6;
+  background-color: #293241;
   margin: 1em;
-  border: 2px solid #FC825B;
+  border: 2px solid #98c1d9;
   border-radius: 10px;
   color: #f1f1f1;
 }
