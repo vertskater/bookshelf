@@ -7,7 +7,10 @@ let btnAddBook = document.querySelector('#btn_addbook');
 let bookShelf = document.querySelector('.container');
 let info = document.querySelector('.info');
 
-function Books(title, author, pages, read) {
+checkLocalStorage();
+updateLocalStorage();
+
+function Books(title, author, pages) {
     this.title = title;
     this.pages = pages;
     this.author = author;
@@ -27,6 +30,7 @@ function addBookToLibrary() {
         newBook.numberOfPages = document.querySelector('form input[type="number"]').value;
         newBook.read = document.querySelector('form input[type="checkbox"]').checked;
         books.push(newBook);
+        updateLocalStorage();
         document.querySelector('form input[placeholder="Title"]').value = '';
         document.querySelector('form input[placeholder="author"]').value = '';
         document.querySelector('form input[type="number"]').value = '';
@@ -65,9 +69,9 @@ function createHTML() {
         const subRead = document.createElement('span');
         const read = books[i].read;
         subRead.textContent = 'Read: ' + read;
-        if(read === true){
+        if (read === true) {
             subRead.style.color = 'lightgreen';
-        }else{
+        } else {
             subRead.style.color = 'red';
         }
         card.appendChild(subRead);
@@ -87,11 +91,12 @@ function createHTML() {
 }
 window.addEventListener('click', (e) => {
     let element = e.target
-    
+
     if (element.classList.contains('far')) {
         dataNr = Object.assign({}, element.parentElement.parentElement.dataset);
         element.parentElement.parentElement.remove();
         books.splice(dataNr.index, 1);
+        updateLocalStorage();
     }
     if (element.classList.contains('fas')) {
         dataNr = Object.assign({}, element.parentElement.parentElement.dataset);
@@ -119,8 +124,45 @@ btnCancel.addEventListener('click', (e) => {
 })
 btnAddBook.addEventListener('click', (e) => {
     e.preventDefault();
-    addBookToLibrary()
+    addBookToLibrary();
     addBooksToHTML();
 })
 
+function checkLocalStorage() {
+    if (localStorage.getItem("library")) {
+        books = JSON.parse(localStorage.getItem("library"));
+        addBooksToHTML();
+    } else {
+        books = [];
+    }
+}
+
+function updateLocalStorage() {
+    localStorage.setItem("library", JSON.stringify(books));
+}
+
+function storageAvailable(type) {
+    var storage;
+    try {
+        storage = window[type];
+        var x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch (e) {
+        return e instanceof DOMException && (
+            // everything except Firefox
+            e.code === 22 ||
+            // Firefox
+            e.code === 1014 ||
+            // test name field too, because code might not be present
+            // everything except Firefox
+            e.name === 'QuotaExceededError' ||
+            // Firefox
+            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            (storage && storage.length !== 0);
+    }
+}
 
