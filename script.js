@@ -11,14 +11,17 @@ function Books(title, author, pages, read) {
     this.title = title;
     this.pages = pages;
     this.author = author;
-    this.read = read;
 };
+function Book(read) {
+    this.read = read
+}
 
 function addBookToLibrary() {
     if (document.querySelector('form input[placeholder="Title"]').value !== '' &&
         document.querySelector('form input[placeholder="author"]').value !== '' &&
         document.querySelector('form input[type="number"]').value !== '') {
-        const newBook = Object.create(Books);
+        Book.prototype = Object.create(Books.prototype)
+        const newBook = new Book;
         newBook.title = document.querySelector('form input[placeholder="Title"]').value;
         newBook.author = document.querySelector('form input[placeholder="author"]').value;
         newBook.numberOfPages = document.querySelector('form input[type="number"]').value;
@@ -62,6 +65,11 @@ function createHTML() {
         const subRead = document.createElement('span');
         const read = books[i].read;
         subRead.textContent = 'Read: ' + read;
+        if(read === true){
+            subRead.style.color = 'lightgreen';
+        }else{
+            subRead.style.color = 'red';
+        }
         card.appendChild(subRead);
         const icons = document.createElement('div');
         icons.classList.add('icon-pack');
@@ -75,18 +83,27 @@ function createHTML() {
         iconBook.classList.add('fa-book-reader');
         icons.appendChild(iconBook);
         bookShelf.appendChild(card);
-        console.log(card);
     }
 }
-window.addEventListener('click', (e) =>{
+window.addEventListener('click', (e) => {
     let element = e.target
-    if(element.classList.contains('far')){
+    
+    if (element.classList.contains('far')) {
         dataNr = Object.assign({}, element.parentElement.parentElement.dataset);
         element.parentElement.parentElement.remove();
         books.splice(dataNr.index, 1);
     }
-    if(element.classList.contains('fas')){
-        
+    if (element.classList.contains('fas')) {
+        dataNr = Object.assign({}, element.parentElement.parentElement.dataset);
+        if (books[dataNr.index].read === true) {
+            books[dataNr.index].read = false;
+            element.parentElement.parentElement.children[3].textContent = 'Read: false';
+            element.parentElement.parentElement.children[3].style.color = 'red';
+        } else {
+            books[dataNr.index].read = true;
+            element.parentElement.parentElement.children[3].textContent = 'Read: true';
+            element.parentElement.parentElement.children[3].style.color = 'lightgreen';
+        }
     }
 })
 
@@ -103,7 +120,6 @@ btnCancel.addEventListener('click', (e) => {
 btnAddBook.addEventListener('click', (e) => {
     e.preventDefault();
     addBookToLibrary()
-    console.table(books);
     addBooksToHTML();
 })
 
