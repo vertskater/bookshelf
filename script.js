@@ -104,10 +104,12 @@ window.addEventListener('click', (e) => {
             books[dataNr.index].read = false;
             element.parentElement.parentElement.children[3].textContent = 'Read: false';
             element.parentElement.parentElement.children[3].style.color = 'red';
+            updateLocalStorage();
         } else {
             books[dataNr.index].read = true;
             element.parentElement.parentElement.children[3].textContent = 'Read: true';
             element.parentElement.parentElement.children[3].style.color = 'lightgreen';
+            updateLocalStorage();
         }
     }
 })
