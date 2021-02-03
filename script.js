@@ -132,14 +132,11 @@ class Bookshelf {
     }
 }
 
-
-
 let bookShelf = new Bookshelf;
 bookShelf.storageAvailable();
-bookShelf.addBookToLibrary()
+//bookShelf.addBookToLibrary()
 bookShelf.checkLocalStorage();
 bookShelf.updateLocalStorage();
-
 
 window.addEventListener('click', (e) => {
     let element = e.target
