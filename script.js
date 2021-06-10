@@ -7,20 +7,18 @@ let btnAddBook = document.querySelector('#btn_addbook');
 let bookShelf = document.querySelector('.container');
 let info = document.querySelector('.info');
 
-function Books(title, author, pages, read) {
+function Book(title, author, pages, read) {
     this.title = title;
     this.pages = pages;
     this.author = author;
-};
-function Book(read) {
     this.read = read
-}
+};
+
 
 function addBookToLibrary() {
     if (document.querySelector('form input[placeholder="Title"]').value !== '' &&
         document.querySelector('form input[placeholder="author"]').value !== '' &&
         document.querySelector('form input[type="number"]').value !== '') {
-        Book.prototype = Object.create(Books.prototype)
         const newBook = new Book;
         newBook.title = document.querySelector('form input[placeholder="Title"]').value;
         newBook.author = document.querySelector('form input[placeholder="author"]').value;
@@ -65,7 +63,7 @@ function createHTML() {
         const subRead = document.createElement('span');
         const read = books[i].read;
         subRead.textContent = 'Read: ' + read;
-        if(read === true){
+        if(read){
             subRead.style.color = 'lightgreen';
         }else{
             subRead.style.color = 'red';
@@ -85,27 +83,32 @@ function createHTML() {
         bookShelf.appendChild(card);
     }
 }
-window.addEventListener('click', (e) => {
-    let element = e.target
-    
-    if (element.classList.contains('far')) {
-        dataNr = Object.assign({}, element.parentElement.parentElement.dataset);
-        element.parentElement.parentElement.remove();
-        books.splice(dataNr.index, 1);
-    }
-    if (element.classList.contains('fas')) {
-        dataNr = Object.assign({}, element.parentElement.parentElement.dataset);
-        if (books[dataNr.index].read === true) {
-            books[dataNr.index].read = false;
-            element.parentElement.parentElement.children[3].textContent = 'Read: false';
-            element.parentElement.parentElement.children[3].style.color = 'red';
-        } else {
-            books[dataNr.index].read = true;
-            element.parentElement.parentElement.children[3].textContent = 'Read: true';
-            element.parentElement.parentElement.children[3].style.color = 'lightgreen';
+const changeBookHTML = (rootElement, event) => {
+    rootElement.addEventListener(event, (e) => {
+        let targetElement = e.target;
+        while(targetElement != null) {
+            if (targetElement.matches('.far')) {
+                dataNr = Object.assign({}, targetElement.parentElement.parentElement.dataset);
+                targetElement.parentElement.parentElement.remove();
+                books.splice(dataNr.index, 1);
+            }
+            if (targetElement.matches('.fas')) {
+                dataNr = Object.assign({}, targetElement.parentElement.parentElement.dataset);
+                if (books[dataNr.index].read) {
+                    books[dataNr.index].read = false;
+                    targetElement.parentElement.parentElement.children[3].textContent = 'Read: false';
+                    targetElement.parentElement.parentElement.children[3].style.color = 'red';
+                } else {
+                    books[dataNr.index].read = true;
+                    targetElement.parentElement.parentElement.children[3].textContent = 'Read: true';
+                    targetElement.parentElement.parentElement.children[3].style.color = 'lightgreen';
+                }
+            }
+            targetElement = targetElement.parentElement;
         }
-    }
-})
+    }, true)
+}
+changeBookHTML(bookShelf, 'click');
 
 add.addEventListener('click', () => {
     formInput.classList.toggle('hidden');
