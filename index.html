@@ -1,44 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/7c1106c071.js" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/7c1106c071.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Bookshelf</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="overlay"></div>
     <header>
-        <h1>Bookshelf</h1>
+      <h1>Bookshelf</h1>
     </header>
     <section class="books">
-        <div class="container">
-
-        </div>
+      <div class="container"></div>
     </section>
     <div id="btn_add" class="addbtn">
-        <span>&plus;</span>
+      <span>&plus;</span>
     </div>
     <form class="forminput hidden">
-        <h3>Add Book</h3>
-        <input type="text" placeholder="Title">
-        <input type="text" placeholder="author">
-        <input type="number" placeholder="pages">
-        <label>Read?</label>
-        <input type="checkbox">
-        <div class="btn_formsset">
-            <input type="submit" value="Cancel" id="btn_cancel">
-            <input type="submit" value="Add Book" id="btn_addbook">
-        </div>
-        <span class="info"></span>
+      <h3>Add Book</h3>
+      <input type="text" placeholder="Title" required />
+      <input type="text" placeholder="author" required />
+      <input type="number" placeholder="pages" required />
+      <label>Read?</label>
+      <input type="checkbox" />
+      <div class="btn_formsset">
+        <input type="submit" value="Cancel" id="btn_cancel" />
+        <input type="submit" value="Add Book" id="btn_addbook" />
+      </div>
+      <span class="info"></span>
     </form>
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>
